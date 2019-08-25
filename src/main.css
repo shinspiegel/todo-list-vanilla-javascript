@@ -1,0 +1,189 @@
+:root {
+  --red: #e21515;
+  --orange: #ec930e;
+  --white: #fffcfc;
+  --grey: #a1a1a1;
+  --black: #363636;
+  --shadow: 0rem 0.5rem 0.8rem rgba(0, 0, 0, 0.15);
+  --borderRadius: 3px;
+  --border: 1px solid var(--orange);
+}
+
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100vh;
+  min-width: 100vw;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  background-color: var(--red);
+  background-image: linear-gradient(to top right, var(--red), var(--orange));
+
+  font-size: 1.6rem;
+  font-family: Krub, Arial, Helvetica, sans-serif;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+main {
+  padding: 1rem;
+  border-radius: 3px;
+  box-shadow: var(--shadow);
+
+  background-color: var(--white);
+  background-image: linear-gradient(to top, var(--white), white);
+
+  width: 40rem;
+  min-height: 50rem;
+}
+
+main h1 {
+  font-size: 2rem;
+  color: var(--red);
+
+  text-align: center;
+  font-weight: 700;
+  padding-bottom: 1rem;
+}
+
+section.newTodo {
+  padding: 1rem 0rem;
+}
+
+section.newTodo form {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 5rem;
+}
+
+section.newTodo form label {
+  position: absolute;
+  top: 50%;
+  left: 1rem;
+  transform: translateY(-50%);
+
+  font-size: 1.4rem;
+  color: var(--orange);
+}
+
+section.newTodo form input {
+  padding: 1rem 0.5rem;
+  padding-left: 6rem;
+  border: var(--border);
+  border-top-left-radius: var(--borderRadius);
+  border-bottom-left-radius: var(--borderRadius);
+  color: var(--red);
+  font-size: 1.4rem;
+}
+
+section.newTodo form input::placeholder {
+  font-style: oblique;
+  color: var(--orange);
+}
+
+section.newTodo form button {
+  background: none;
+  border: var(--border);
+  border-left: none;
+  border-top-right-radius: var(--borderRadius);
+  border-bottom-right-radius: var(--borderRadius);
+  color: var(--orange);
+}
+
+section.todo h2 {
+  font-size: 1.4rem;
+  font-weight: 300;
+  font-style: oblique;
+  text-align: center;
+  color: var(--red);
+  margin-bottom: 1rem;
+}
+
+#todoList {
+  list-style: none;
+}
+
+.todoItem {
+  display: grid;
+  padding-top: 1.5rem;
+  grid-template-columns: 3rem 1fr 4rem;
+  grid-template-areas: "checkbox text button";
+  border-bottom: 1px solid var(--orange);
+
+  --borderRadius: 5px;
+}
+
+.todoItem input {
+  grid-area: checkbox;
+  opacity: 0;
+  height: 2rem;
+  width: 2.5rem;
+}
+
+.todoItem input + .checkbox {
+  grid-area: checkbox;
+  cursor: pointer;
+
+  border: 1px solid var(--orange);
+  border-bottom: none;
+  margin-right: 0.5rem;
+  border-top-left-radius: var(--borderRadius);
+  border-top-right-radius: var(--borderRadius);
+
+  transition: all ease 0.3s;
+}
+
+.todoItem input:focus + .checkbox,
+.todoItem input:hover + .checkbox {
+  background-color: var(--orange);
+}
+
+.todoItem input:checked + .checkbox {
+  border-color: var(--grey);
+  background-color: var(--grey);
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+}
+
+.todoItem p {
+  grid-area: text;
+  font-weight: 700;
+  color: var(--orange);
+}
+
+.todoItem.completed p {
+  font-weight: 300;
+  font-style: oblique;
+  color: var(--grey);
+  text-decoration-line: line-through;
+}
+
+.todoItem button {
+  grid-area: button;
+  border: none;
+  border-radius: 0;
+  border-top-left-radius: var(--borderRadius);
+  border-top-right-radius: var(--borderRadius);
+  background: none;
+  transition: all ease 0.3s;
+}
+
+.todoItem button:hover,
+.todoItem button:focus {
+  color: var(--white);
+  background-color: var(--red);
+}
