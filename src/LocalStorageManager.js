@@ -2,7 +2,10 @@ function GetData() {
   const stringData = localStorage.getItem("data");
   const data = JSON.parse(stringData);
 
-  return data;
+  if (data) {
+    return data;
+  }
+  return [];
 }
 
 function SetData(data) {

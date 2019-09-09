@@ -11,15 +11,17 @@ const App = () => {
 
   const list = document.getElementById("todoList");
 
-  todoList.map((todo, index) => {
-    const newElement = CreateNode({
-      text: todo.title,
-      id: todo.id,
-      index: index,
-      completed: todo.completed
+  if (todoList) {
+    todoList.map((todo, index) => {
+      const newElement = CreateNode({
+        text: todo.title,
+        id: todo.id,
+        index: index,
+        completed: todo.completed
+      });
+      list.appendChild(newElement);
     });
-    list.appendChild(newElement);
-  });
+  }
 };
 
 App();
