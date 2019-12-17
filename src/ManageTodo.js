@@ -5,11 +5,13 @@ function CreateNewTodoItem(todo) {
 }
 
 function CreateNewTodo(event) {
+  event.preventDefault();
   const text = event.target[0].value;
   const todo = CreateNewTodoItem(text);
   const todoList = [...GetData(), todo];
 
   SetData(todoList);
+  location.reload();
 }
 
 function DeleteTodo(todoId) {
@@ -26,14 +28,7 @@ function CheckTodo(todoIndex) {
 
 function CreateUniqueID() {
   const t = new Date();
-  const id =
-    new String(t.getFullYear()) +
-    new String(t.getMonth()) +
-    new String(t.getDate()) +
-    new String(t.getHours()) +
-    new String(t.getMinutes()) +
-    new String(t.getSeconds());
-
+  const id = `${t.getFullYear()}${t.getMonth()}${t.getDate()}${t.getHours()}${t.getMinutes()}${t.getSeconds()}`;
   return id;
 }
 
